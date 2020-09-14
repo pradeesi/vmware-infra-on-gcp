@@ -99,5 +99,5 @@
     kvm_domain_type: "{{ cpu_info['content'] | b64decode | regex_search('(vmx|svm)', multiline=True) | ternary('kvm', 'qemu') }}"
 
 # Cinfugure Nested Virtualization
-- name: Configure Nested Virtualization
-  include_tasks: enable_nested_virtualization.yml
+# - name: Configure Nested Virtualization
+#   include_tasks: enable_nested_virtualization.yml
