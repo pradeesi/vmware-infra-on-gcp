@@ -37,9 +37,9 @@ overwrite_iso_files_if_already_copied: false
 enable_centos7_pxe_installation: true
 # Path on Ansible Host (Local)
 copy_centos7_iso: true
-centos7_iso_image_source_path: os_images/centos/centos7/CentOS-7-x86_64-Minimal-2003.iso
+centos7_iso_image_source_path: os_images/centos/centos7/CentOS-7.iso
 # Paths on KVM Host (Remote)
-centos7_iso_image_path: /root/CentOS-7-x86_64-Minimal-2003.iso
+centos7_iso_image_path: /root/CentOS-7.iso
 centos7_iso_mount_loc: /mnt/centos/centos7
 centos7_iso_extracted_files_folder: centos/centos7
 centos7_ks_file_folder: centos/centos7/centos7_ks
@@ -61,9 +61,9 @@ centos8_ks_file_folder: centos/centos8/centos8_ks
 enable_esxi6_5_pxe_installation: true
 # Path on Ansible Host (Local)
 copy_esxi6_5_iso: true
-esxi6_5_iso_image_source_path: os_images/vmware/vmware_6_5/VMware-VMvisor-Installer-201908001-14320405.x86_64.iso
+esxi6_5_iso_image_source_path: os_images/vmware/vmware_6_5/esxi6_5.iso
 # Paths on KVM Host (Remote)
-esxi6_5_iso_image_path: /root/VMware-VMvisor-Installer-201908001-14320405.x86_64.iso
+esxi6_5_iso_image_path: /root/esxi6_5.iso
 esxi6_5_iso_mount_loc: /mnt/vmware/vsphere6.5/esxi
 esxi6_5_iso_extracted_files_folder: vmware/vsphere6.5/esxi
 esxi6_5_ks_file_folder: vmware/vsphere6.5/esxi_ks_file
@@ -72,9 +72,9 @@ esxi6_5_ks_file_folder: vmware/vsphere6.5/esxi_ks_file
 #--------------------------------------
 # Path on Ansible Host (Local)
 copy_vcenter6_5_iso: true
-vcenter6_5_iso_image_source_path: os_images/vmware/vmware_6_5/VMware-VCSA-all-6.5.0-15259038.iso
+vcenter6_5_iso_image_source_path: os_images/vmware/vcenter6_5.iso
 # Paths on KVM Host (Remote)
-vcenter6_5_iso_image_path: /root/VMware-VCSA-all-6.5.0-15259038.iso
+vcenter6_5_iso_image_path: /root/vcenter6_5.iso
 vcenter6_5_iso_mount_loc: /mnt/vmware/vsphere6.5/vcsa
 vcenter6_5_iso_extracted_files_folder: vmware/vsphere6.5/vcsa
 vcenter6_5_ks_file_folder: vmware/vsphere6.5/vcsa_ks_file
