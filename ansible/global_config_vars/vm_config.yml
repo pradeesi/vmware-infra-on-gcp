@@ -1,0 +1,100 @@
+---
+# ------------------------------------------
+# file: global_config_vars/vm_config.yml
+# ver: 1.0
+# ansible ver: 2.7.8
+# python ver: 2.7.15
+# author: Pradeep Singh
+# description: KVM Virtual Machine Config Variables
+# ------------------------------------------
+
+
+kvm_virtual_machines:
+  - kvm_host: KVM-HOST-IP-ADDR
+    virtual_machines:
+      - name: esxi1
+        action: create
+        installation_mode: pxe
+        ram: 12288
+        vcpus: 6
+        disk_size: 200
+        os_type: linux
+        os_variant: virtio26
+        netwrok_connections:
+          - network: pxe-network
+            pxe_boot_interface: true
+            mac_addr: 52:54:00:4b:55:f4  # MAC Address is mandatory for host specific pxe boot process
+          - network: anthos-kvm-nw
+        pxe_boot_config:
+          pxe_os: esxi6.5
+          host_name: esxi1
+          root_password: P@ssw0rd
+          ip_addr: 192.168.2.6
+          net_mask: 255.255.255.0
+          gateway: 192.168.2.1
+          dns_server: 192.168.2.1
+    
+      - name: esxi2
+        action: create
+        installation_mode: pxe
+        ram: 51200
+        vcpus: 8
+        disk_size: 990
+        os_type: linux
+        os_variant: virtio26
+        netwrok_connections:
+          - network: pxe-network
+            pxe_boot_interface: true
+            mac_addr: 52:54:00:4b:55:f5 # MAC Address is mandatory for host specific pxe boot process
+          - network: anthos-kvm-nw
+        pxe_boot_config:
+          pxe_os: esxi6.5
+          host_name: esxi2
+          root_password: P@ssw0rd
+          ip_addr: 192.168.2.7
+          net_mask: 255.255.255.0
+          gateway: 192.168.2.1
+          dns_server: 192.168.2.1
+
+      - name: esxi3
+        action: delete
+        installation_mode: pxe
+        ram: 20480
+        vcpus: 8
+        disk_size: 500
+        os_type: linux
+        os_variant: virtio26
+        netwrok_connections:
+          - network: pxe-network
+            pxe_boot_interface: true
+            mac_addr: 52:54:00:4b:55:35  # MAC Address is mandatory for host specific pxe boot process
+          - network: anthos-kvm-nw
+        pxe_boot_config:
+          pxe_os: esxi6.5
+          host_name: esxi3
+          root_password: P@ssw0rd
+          ip_addr: 192.168.2.8
+          net_mask: 255.255.255.0
+          gateway: 192.168.2.1
+          dns_server: 192.168.2.1      
+
+      - name: gcloud_sdk_vm
+        action: delete
+        installation_mode: pxe
+        ram: 4096
+        vcpus: 4
+        disk_size: 40
+        os_type: linux
+        os_variant: rhel7
+        netwrok_connections:
+          - network: pxe-network
+            pxe_boot_interface: true
+            mac_addr: 52:54:00:4b:55:15  # MAC Address is mandatory for host specific pxe boot process
+        pxe_boot_config:
+          pxe_os: centos7
+          host_name: gcloud_sdk_vm
+          root_password: P@ssw0rd
+          ip_addr: 192.168.2.4
+          net_mask: 255.255.255.0
+          gateway: 192.168.2.1
+          dns_server: 192.168.2.1     

@@ -1,0 +1,93 @@
+---
+# ------------------------------------------
+# file: main.yml
+# ver: 1.0
+# ansible ver: 2.7.8
+# python ver: 2.7.15
+# author: Pradeep Singh
+# description: This is the main file for KVM based CI/CD Automation framework.
+# ------------------------------------------
+
+
+- name: Manage KVM Guests
+  user: root
+  hosts: KVM_HOSTS
+  gather_facts: yes
+  connection: ssh
+
+
+  tasks:
+
+
+#---------------------------------------------
+# Include Global Config Variables
+#---------------------------------------------
+    - name: Include KVM Role
+      include_role:
+        name: load_config_vars
+#---------------------------------------------
+
+
+# ------------------------------
+# Configure Base Setup
+# ------------------------------
+    - name: Include Baremetal Config Role
+      include_role:
+        name: baremetal_config_master
+# ------------------------------
+
+
+# ------------------------------
+# Configure KVM Server 
+# ------------------------------
+    # Configure KVM Server
+    - name: Include KVM Role
+      include_role:
+        name: kvm_master
+      vars:
+        - enable_kvm: true
+# ------------------------------
+
+
+# ------------------------------
+# Configure PXE Boot Server 
+# ------------------------------
+    - name: Configure PXE Boot Server
+      include_role:
+        name: pxe_server_master
+      vars:
+        - operation: 'configure_pxe_server'
+# ------------------------------
+
+
+# ------------------------------
+# Configure KVM Networks 
+# ------------------------------
+    # Configure KVM networks
+    - name: Include KVM Role
+      include_role:
+        name: kvm_master
+      vars:
+        - manage_kvm_networks: true 
+# ------------------------------
+
+
+# ------------------------------
+# Create VMs on KVM Host 
+# ------------------------------
+    - name: Include kvm_vm_master role
+      include_role:
+        name: kvm_vm_master
+      when:
+        - kvm_virtual_machines is defined
+# ------------------------------
+
+
+# ------------------------------
+# Install vCenter Server
+# ------------------------------
+    - name: Install Vmware vCenter Server Appliance
+      include_role:
+        name: vcenter_master
+# ------------------------------
+

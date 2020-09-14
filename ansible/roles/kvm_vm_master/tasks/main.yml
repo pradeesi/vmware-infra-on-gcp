@@ -1,0 +1,23 @@
+---
+# ------------------------------------------
+# file: roles/vm_manager/tasks/main.yml
+# ver: 1.0
+# ansible ver: 2.7.8
+# python ver: 2.7.15
+# author: Pradeep Singh
+# description: This task will manage vm lifecycle.
+# ------------------------------------------
+
+
+# KVM Based Virtual Machine Manager Role
+- name: Include manage kvm host virtual machines task
+  include_tasks: manage_kvm_host_vms.yml
+  with_items: "{{ kvm_virtual_machines }}"
+  loop_control:
+    loop_var: kvm_hosts_item
+  when:
+    - kvm_virtual_machines is defined
+    - kvm_hosts_item.virtual_machines is defined
+    - inventory_hostname == kvm_hosts_item.kvm_host
+
+

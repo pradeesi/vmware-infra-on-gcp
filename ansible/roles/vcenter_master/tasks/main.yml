@@ -1,0 +1,34 @@
+
+---
+# ------------------------------------------
+# file: roles/vcenter_master/tasks/main.yml
+# ver: 1.0
+# ansible ver: 2.7.8
+# python ver: 2.7.15
+# author: Pradeep Singh
+# description: vCenter role main file
+# ------------------------------------------
+
+
+- name: "Check if the vCenter VM already exist - {{vcenter.name}}"
+  vmware_guest_find:
+    hostname: "{{vcenter.esxi_host.hostname}}"
+    username: "root"
+    password: "{{vcenter.esxi_host.password}}"
+    validate_certs: no
+    name: "{{vcenter.name}}"
+  register: vm_facts
+  ignore_errors: yes
+
+
+- name: Print error status
+  debug: msg="vCenter VM Doesn't exist- {{vm_facts.failed}}"
+
+- name: Install vmware vCenter 6.5 if it isn't installed
+  include_tasks: vcenter6_5/install_vmware_vcenter6_5.yml
+  when:
+    - vm_facts.failed
+
+
+- name: Configure vmware vCenter
+  include_tasks: configure_vcenter.yml

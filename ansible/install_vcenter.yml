@@ -1,0 +1,40 @@
+---
+# ------------------------------------------
+# file: install_vcenter.yml
+# ver: 1.0
+# ansible ver: 2.7.8
+# python ver: 2.7.15
+# author: Pradeep Singh
+# description: Install vCenter Server on ESXi
+# ------------------------------------------
+
+
+- name: Manage KVM Guests
+  user: root
+  hosts: KVM_HOSTS
+  gather_facts: yes
+  connection: ssh
+
+  tasks:
+
+#---------------------------------------------
+# Include Global Config Variables
+#---------------------------------------------
+    - name: Include KVM Role
+      include_role:
+        name: load_config_vars
+#---------------------------------------------
+
+
+
+#---------------------------------------------
+# Install vCenter Server
+#---------------------------------------------
+    - name: Install Vmware vCenter Server Appliance
+      include_role:
+        name: vcenter_master
+#---------------------------------------------
+
+
+
+
