@@ -1,0 +1,6 @@
+#ansible/os_images/*
+.DS_Store
+*.iso
+
+
+ansible/os_images/.gitkeep
