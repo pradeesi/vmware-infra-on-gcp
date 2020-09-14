@@ -11,7 +11,7 @@
 
 - name: Manage KVM Guests
   user: pradeesi
-  hosts: KVM_HOSTS
+  hosts: localhost
   gather_facts: yes
   connection: ssh
 
