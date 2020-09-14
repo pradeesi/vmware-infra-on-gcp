@@ -38,7 +38,7 @@ vcenter:
       enable_vsan: false
       esxi_hosts:     
         - kvm_vm_name: esxi1
-        - kvm_vm_name: esxi2
+#        - kvm_vm_name: esxi2
     distributed_virtual_switch:
       dvs_name: DSwitch
       version: 6.0.0
@@ -47,8 +47,8 @@ vcenter:
       esxi_hosts:
         - kvm_vm_name: esxi1
           vmnic: vmnic1
-        - kvm_vm_name: esxi2
-          vmnic: vmnic1
+#        - kvm_vm_name: esxi2
+#          vmnic: vmnic1
 
 
 
