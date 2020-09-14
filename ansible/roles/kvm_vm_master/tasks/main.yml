@@ -18,6 +18,6 @@
   when:
     - kvm_virtual_machines is defined
     - kvm_hosts_item.virtual_machines is defined
-    - inventory_hostname == kvm_hosts_item.kvm_host
+#    - inventory_hostname == kvm_hosts_item.kvm_host
 
 

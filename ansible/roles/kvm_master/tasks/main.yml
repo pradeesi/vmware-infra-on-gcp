@@ -25,6 +25,6 @@
   when:
     - kvm_networks is defined
     - kvm_networks_item.virtual_networks is defined
-    - inventory_hostname == kvm_networks_item.kvm_host
+#    - inventory_hostname == kvm_networks_item.kvm_host
     - (manage_kvm_networks is defined and manage_kvm_networks == true)
     
