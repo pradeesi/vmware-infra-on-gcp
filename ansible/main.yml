@@ -10,7 +10,7 @@
 
 
 - name: Manage KVM Guests
-  user: root
+  user: pradeesi
   hosts: KVM_HOSTS
   gather_facts: yes
   connection: ssh

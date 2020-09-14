@@ -12,27 +12,27 @@
 #---------------------------------------------
 # Install Basic OS Packages and Repos
 #---------------------------------------------
-- name: Upgrade all packages
-  yum:
-    name: '*'
-    state: latest
+# - name: Upgrade all packages
+#   yum:
+#     name: '*'
+#     state: latest
 
-- name: 'epel-release' 
-  become: true
-  yum:
-    state: present
-    name: epel-release
+# - name: 'epel-release' 
+#   become: true
+#   yum:
+#     state: present
+#     name: epel-release
 
-- name: CentOS Package Repolist
-  shell: "yum repolist"
-  become: true
+# - name: CentOS Package Repolist
+#   shell: "yum repolist"
+#   become: true
 
 - name: Install common software requirements for CentOS 
   become: true
   yum:
     state: present
     name:
-      - epel-release
+#      - epel-release
       - python-urllib3
       - python-requests
       - ansible
@@ -57,45 +57,45 @@
 #---------------------------------------------
 # Copy OS Images
 #---------------------------------------------
-- name: Copy CentOS 7 ISO to KVM Host
-  copy:
-    src: "{{centos7_iso_image_source_path}}"
-    dest: "{{centos7_iso_image_path}}"
-    mode: '1777'
-  when: copy_centos7_iso == true
+# - name: Copy CentOS 7 ISO to KVM Host
+#   copy:
+#     src: "{{centos7_iso_image_source_path}}"
+#     dest: "{{centos7_iso_image_path}}"
+#     mode: '1777'
+#   when: copy_centos7_iso == true
 
-- name: Copy CentOS 8 ISO to KVM Host
-  copy:
-    src: "{{centos8_iso_image_source_path}}"
-    dest: "{{centos8_iso_image_path}}"
-    mode: '1777'
-  when: copy_centos8_iso == true
+# - name: Copy CentOS 8 ISO to KVM Host
+#   copy:
+#     src: "{{centos8_iso_image_source_path}}"
+#     dest: "{{centos8_iso_image_path}}"
+#     mode: '1777'
+#   when: copy_centos8_iso == true
 
-- name: Copy ESXi 6.5 ISO to KVM Host
-  copy:
-    src: "{{esxi6_5_iso_image_source_path}}"
-    dest: "{{esxi6_5_iso_image_path}}"
-    mode: '1777'
-  when: copy_esxi6_5_iso == true
+# - name: Copy ESXi 6.5 ISO to KVM Host
+#   copy:
+#     src: "{{esxi6_5_iso_image_source_path}}"
+#     dest: "{{esxi6_5_iso_image_path}}"
+#     mode: '1777'
+#   when: copy_esxi6_5_iso == true
 
-- name: Copy vCenter 6.5 ISO to KVM Host
-  copy:
-    src: "{{vcenter6_5_iso_image_source_path}}"
-    dest: "{{vcenter6_5_iso_image_path}}"
-    mode: '1777'
-  when: copy_vcenter6_5_iso == true
+# - name: Copy vCenter 6.5 ISO to KVM Host
+#   copy:
+#     src: "{{vcenter6_5_iso_image_source_path}}"
+#     dest: "{{vcenter6_5_iso_image_path}}"
+#     mode: '1777'
+#   when: copy_vcenter6_5_iso == true
 
-- name: Copy ESXi 6.7 ISO to KVM Host
-  copy:
-    src: "{{esxi6_7_iso_image_source_path}}"
-    dest: "{{esxi6_7_iso_image_path}}"
-    mode: '1777'
-  when: copy_esxi6_7_iso == true
+# - name: Copy ESXi 6.7 ISO to KVM Host
+#   copy:
+#     src: "{{esxi6_7_iso_image_source_path}}"
+#     dest: "{{esxi6_7_iso_image_path}}"
+#     mode: '1777'
+#   when: copy_esxi6_7_iso == true
 
-- name: Copy vCenter 6.7 ISO to KVM Host
-  copy:
-    src: "{{vcenter6_7_iso_image_source_path}}"
-    dest: "{{vcenter6_7_iso_image_path}}"
-    mode: '1777'
-  when: copy_vcenter6_7_iso == true
+# - name: Copy vCenter 6.7 ISO to KVM Host
+#   copy:
+#     src: "{{vcenter6_7_iso_image_source_path}}"
+#     dest: "{{vcenter6_7_iso_image_path}}"
+#     mode: '1777'
+#   when: copy_vcenter6_7_iso == true
 #---------------------------------------------
