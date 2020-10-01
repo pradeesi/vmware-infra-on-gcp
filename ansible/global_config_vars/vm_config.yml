@@ -15,7 +15,7 @@ kvm_virtual_machines:
       - name: esxi1
         action: create
         installation_mode: pxe
-        ram: 112640
+        ram: 61440
         vcpus: 26
         disk_size: 800
         os_type: linux
